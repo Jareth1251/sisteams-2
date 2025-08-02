@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tienda de Música</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>JARETH'S SOUND </h1>
+    <div class="cart">🛒 Carrito: <span id="cart-count">0</span></div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Bienvenido a JARETH'S SOUND</h2>
+      <p>Explora una colección exclusiva de vinilos clásicos y modernos para verdaderos melómanos. ¡Haz crecer tu colección hoy!</p>
+    </section>
+
+    <section class="pdf-link">
+      <h2>Catálogo de Vinilos</h2>
+      <p>Puedes consultar el catálogo de productos en PDF a continuación:</p>
+      <a href="catalogo.pdf" target="_blank">
+        <button class="pdf-button">📄 Ver PDF</button>
+      </a>
+    </section>
+    <div style="margin-top: 30px; text-align: center;">
+      <button onclick="generateQuote()" class="pdf-button">🧾 Generar Cotización</button>
+    </div>
+    
+    <div id="quote-container" style="display: none;">
+      <h3>Cotización</h3>
+      <div id="quote-content">
+        <p><strong>Fecha:</strong> <span id="quote-date"></span></p>
+        <table id="quote-table">
+          <thead>
+            <tr>
+              <th>Vinilo</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <h4 id="total-price"></h4>
+      </div>
+      <button onclick="printQuote()" class="pdf-button">📄 Descargar PDF</button>
+    </div>
+            
+    <section class="carousel-section">
+      <h2>Galería de Vinilos</h2>
+      <div class="carousel">
+        <button class="carousel-button prev" onclick="moveCarousel(-1)">❮</button>
+        <div class="carousel-track">
+          <img src="pink_floyd.png" alt="Dark Side of the Moon" class="carousel-item" />
+          <img src="the_strokes_new_abnormal.png" alt="The New Abnormal" class="carousel-item" />
+          <img src="the_strokes_angles.png" alt="Angles" class="carousel-item" />
+          <img src="vinilos_collage.png" alt="Collage" class="carousel-item" />
+          <img src="3c03ddd9-e118-42b5-974c-eeece71ae749.png" alt="Nuevo Vinilo" class="carousel-item" />
+        </div>
+        <button class="carousel-button next" onclick="moveCarousel(1)">❯</button>
+      </div>
+    </section>
+    
+    <h2>Vinilos Destacados</h2>
+    <div class="product-list">
+      <div class="product"> 
+        <img src="pink_floyd.png" alt="Dark Side of the Moon" />
+        <h3>Dark Side of the Moon</h3>
+        <p><strong>Artista:</strong> Pink Floyd</p>
+        <p>Una obra maestra psicodélica, lanzada en 1973. Inmortal en sonido y concepto.</p>
+        <p><strong>$950 MXN</strong></p>
+        <button onclick="addToCart('Dark Side of the Moon', 950)">Agregar al carrito</button>
+      </div>
+    
+      <div class="product">
+        <img src="the_strokes_new_abnormal.png" alt="The New Abnormal" />
+        <h3>The New Abnormal</h3>
+        <p><strong>Artista:</strong> The Strokes</p>
+        <p>El regreso más esperado de la banda neoyorquina, con un sonido fresco y nostálgico.</p>
+        <p><strong>$870 MXN</strong></p>
+        <button onclick="addToCart('The New Abnormal', 870)">Agregar al carrito</button>
+      </div>
+    
+      <div class="product">
+        <img src="the_strokes_angles.png" alt="Angles" />
+        <h3>Angles</h3>
+        <p><strong>Artista:</strong> The Strokes</p>
+        <p>Colores, geometría y un estilo ochentero definen este disco lleno de experimentación.</p>
+        <p><strong>$780 MXN</strong></p>
+        <button onclick="addToCart('Angles', 780)">Agregar al carrito</button>
+      </div>
+    
+      <div class="product">
+        <img src="vinilos_collage.png" alt="Selección Vintage" />
+        <h3>Selección Vintage</h3>
+        <p><strong>Varios Artistas</strong></p>
+        <p>Incluye clásicos como Bowie, The Beach Boys, Michael Jackson, Radiohead y más.</p>
+        <p><strong>$1200 MXN</strong></p>
+        <button onclick="addToCart('Selección Vintage', 1200)">Agregar al carrito</button>
+      </div>
+    </div>
+  </main>    
+
+  <footer>
+    <p>© 2025 JARETH'S SOUND. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- CHATBOX INICIO -->
+  <div id="chat-button" onclick="toggleChat()">💬</div>
+  <div id="chat-container" class="hidden">
+    <div id="chat-header">
+      Asistente de Jareth
+      <span onclick="toggleChat()">✖</span>
+    </div>
+    <div id="chat-messages"></div>
+    <div id="chat-input">
+      <input type="text" id="chat-text" placeholder="Escribe tu mensaje..." onkeydown="handleChatKey(event)" />
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+  </div>
+  <!-- CHATBOX FIN -->
+
+  <script src="script.js"></script>
+</body>
+</html>
